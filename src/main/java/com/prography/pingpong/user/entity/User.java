@@ -1,10 +1,15 @@
 package com.prography.pingpong.user.entity;
 
 import jakarta.persistence.Entity;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
     private Integer id;

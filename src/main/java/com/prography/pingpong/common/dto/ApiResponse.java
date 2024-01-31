@@ -1,10 +1,15 @@
 package com.prography.pingpong.common.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+import java.util.List;
+
+@Getter
+@AllArgsConstructor
 public class ApiResponse<T> {
     private Integer code;
     private String message;
-    private T result;
+    private List<T> result;
 }
