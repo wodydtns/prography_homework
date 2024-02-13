@@ -1,41 +1,27 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:prography
+    #url: jdbc:h2:mem:prography;NON_KEYWORDS=USER
+    url: jdbc:log4jdbc:h2:mem:prography;NON_KEYWORDS=USER
     username: sa
     password:
+    #driver-class-name: org.h2.Driver
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    schema: classpath:h2/schema.sql
-    data: classpath:h2/data.sql
-    initialization-mode: always
   jpa:
     open-in-view: false
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+    generate-ddl: true
+    show-sql: true
 
-# log4jdbc, Mybatis Console Log
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 logging:
   level:
-    com:
-      zaxxer:
-        hikari: INFO
-    javax:
-      sql:
-        DataSource: OFF
-    jdbc:
-      audit: OFF
-      resultset: OFF
-      resultsettable: DEBUG
-      sqlonly: OFF
-      sqltiming: DEBUG
-      connection: OFF
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: INFO
-    root: INFO
+    sql: info
+
+
 server:
   port:8080
